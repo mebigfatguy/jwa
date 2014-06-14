@@ -1,7 +1,7 @@
 jwa
 ===
 
-A web application showing to add the jamm java agent to a web app
+A web application showing how to add the jamm java agent to a web application
 
 
 Using JAMM from a web app seems problematic. Perhaps there is an easier way, but this shows that it can be done, albeit painful.
