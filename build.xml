@@ -32,7 +32,7 @@
 		
 	<target name="compile" depends="init" >
 		<echo message="${external_lib.dir}/jamm-0.2.7-SNAPSHOT.jar" file="${classes.dir}/jamm.location" />
-		<javac srcdir="${src.dir}" destdir="${classes.dir}" debug="true" includeantruntime="false">
+		<javac srcdir="${src.dir}" destdir="${classes.dir}" source="1.7" target="1.7" debug="true" includeantruntime="false">
 			<classpath refid="jwa.classpath" />
 		</javac>
 	</target>
