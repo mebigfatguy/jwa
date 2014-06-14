@@ -27,7 +27,11 @@
 		<copy file="${env.JAVA_HOME}/lib/tools.jar" todir="${war_lib.dir}" />	
 		<get src="http://repo1.maven.org/maven2/javax/servlet/javax.servlet-api/3.1.0/javax.servlet-api-3.1.0.jar" dest="${external_lib.dir}" />
 		<get src="http://repo1.maven.org/maven2/com/github/jbellis/jamm/0.2.7/jamm-0.2.7.jar" dest="${external_lib.dir}" ignoreerrors="true"/>
+		<echo message="" />
+		<echo message="=======================================================================================================" />
 		<echo message="jamm-0.2.7 has not been published yet, so you will have to build it, and place it in the above location" />
+		<echo message="=======================================================================================================" />
+		<echo message="" />
 	</target>
 		
 	<target name="compile" depends="init" >
