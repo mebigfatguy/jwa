@@ -37,6 +37,23 @@ To build war just issue
 
     ant war
 
+Then to run in Tomcat, create a file under 
+
+    ${TOMCAT_HOME}/conf/Catalina/localhost
+
+called
+
+    jwa.xml
+
+with the contents
+
+    <Context docBase="/home/dave/dev/jwa/war">
+    </Context>
+
+(or whereever you placed your project)
+
+Startup Tomcat, and you should see the size of the event object in the logs.
+
 
 
 
