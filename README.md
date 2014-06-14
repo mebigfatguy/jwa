@@ -3,6 +3,9 @@ jwa
 
 A web application showing how to add the jamm java agent to a web application
 
+JAMM is a native memory allocation size calculator created as a java agent, you can see it here
+
+    https://github.com/jbellis/jamm
 
 Using JAMM from a web app seems problematic. Perhaps there is an easier way, but this shows that it can be done, albeit painful.
 From what i surmise you can't specify -javaagent in JAVA_OPTS because the command line argument requires a file reference, but
@@ -20,6 +23,6 @@ The location of the jamm jar file is specified in a file in the classpath called
 When run, you will see that the MemoryMeter is then allocated, and called correctly.
 
 Unfortunately, at present, the released version of jamm (0.2.6) doesn't allow dynamic installation. So for now, you will have to
-build jamm yourself and manually copy it to {project_loc}/lib.
+build jamm yourself and manually copy it to ${project_loc}/lib.
 
 
