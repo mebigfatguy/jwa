@@ -33,4 +33,10 @@ there is a class
 which allows you to do this. It is found in the tools.jar file, in ${JAVA_HOME}/lib. So this project uses that class. Obviously being a
 internal (non-public) class, there are issues there. But it appears that this is the only way to dynamically set up an agent.
 
+To build war just issue
+
+    ant war
+
+
+
 
