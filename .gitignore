@@ -2,3 +2,4 @@
 .project
 lib
 war/WEB-INF/classes
+*.war
