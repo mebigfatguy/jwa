@@ -25,4 +25,12 @@ When run, you will see that the MemoryMeter is then allocated, and called correc
 Unfortunately, at present, the released version of jamm (0.2.6) doesn't allow dynamic installation. So for now, you will have to
 build jamm yourself and manually copy it to ${project_loc}/lib.
 
+Another Bummer is that in order to connect to the VM at runtime, you need a platform specific tool to do so. For Oracle's JVM at least,
+there is a class
+
+    com.sun.tools.attach.VirtualMachine
+
+which allows you to do this. It is found in the tools.jar file, in ${JAVA_HOME}/lib. So this project uses that class. Obviously being a
+internal (non-public) class, there are issues there. But it appears that this is the only way to dynamically set up an agent.
+
 
