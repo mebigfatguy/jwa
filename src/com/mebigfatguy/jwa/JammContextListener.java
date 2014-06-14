@@ -1,5 +1,7 @@
 package com.mebigfatguy.jwa;
 
+import java.io.BufferedReader;
+import java.io.InputStreamReader;
 import java.lang.management.ManagementFactory;
 
 import javax.servlet.ServletContextEvent;
@@ -29,13 +31,14 @@ public class JammContextListener implements ServletContextListener {
 	
 	private void installJavaAgent() {
         
-        try {
+        try (BufferedReader br = new BufferedReader(new InputStreamReader(JammContextListener.class.getResourceAsStream("/jamm.location")))) {
     		String nameOfRunningVM = ManagementFactory.getRuntimeMXBean().getName();
             int atPos = nameOfRunningVM.indexOf('@');
             String pid = nameOfRunningVM.substring(0, atPos);
 
             VirtualMachine vm = VirtualMachine.attach(pid);
-            vm.loadAgent("/home/dave/dev/jwa/lib/jamm-0.2.7-SNAPSHOT.jar", "");
+            String location = br.readLine();
+            vm.loadAgent(location, "");
             vm.detach();
         } catch (Exception e) {
             throw new RuntimeException(e);
