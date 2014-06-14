@@ -1,0 +1,48 @@
+<project name="jwa" basedir=".">
+	
+	<property name="src.dir" value="${basedir}/src" />
+	<property name="war.dir" value="${basedir}/war" />
+	<property name="webinf.dir" value="${war.dir}/WEB-INF" />
+	<property name="classes.dir" value="${webinf.dir}/classes" />
+	<property name="external_lib.dir" value="${basedir}/lib" />
+	<property name="war_lib.dir" value="${webinf.dir}/lib" />
+	<property environment="env"/>
+	
+	<path id="jwa.classpath">
+		<pathelement location="${external_lib.dir}/javax.servlet-api-3.1.0.jar"/>
+		<pathelement location="${external_lib.dir}/jamm-0.2.7-SNAPSHOT.jar"/>
+		<pathelement location="${env.JAVA_HOME}/lib/tools.jar" />
+	</path>
+		
+	<target name="clean">
+		<delete dir="${classes.dir}" />
+		<delete dir="${war_lib.dir}" />
+		<delete file="${basedir}/jwa.war" />
+	</target>
+		
+	<target name="init">
+		<mkdir dir="${classes.dir}" />
+		<mkdir dir="${external_lib.dir}" />
+
+		<copy file="${env.JAVA_HOME}/lib/tools.jar" todir="${war_lib.dir}" />	
+		<get src="http://repo1.maven.org/maven2/javax/servlet/javax.servlet-api/3.1.0/javax.servlet-api-3.1.0.jar" dest="${external_lib.dir}" />
+		<get src="http://repo1.maven.org/maven2/com/github/jbellis/jamm/0.2.7/jamm-0.2.7.jar" dest="${external_lib.dir}" ignoreerrors="true"/>
+		<echo message="jamm-0.2.7 has not been published yet, so you will have to build it, and place it in the above location" />
+	</target>
+		
+	<target name="compile" depends="init" >
+		<echo message="${external_lib.dir}/jamm-0.2.7-SNAPSHOT.jar" file="${classes.dir}/jamm.location" />
+		<javac srcdir="${src.dir}" destdir="${classes.dir}" debug="true" includeantruntime="false">
+			<classpath refid="jwa.classpath" />
+		</javac>
+	</target>
+		
+	<target name="war" depends="compile" >
+		<jar destfile="${basedir}/jwa.war">
+			<fileset dir="${war.dir}">
+				<include name="**/*" />
+			</fileset>
+		</jar>
+	</target>	
+	
+</project>
