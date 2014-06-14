@@ -22,7 +22,9 @@ public class JammContextListener implements ServletContextListener {
 		MemoryMeter mm = new MemoryMeter();
 		
 		long size = mm.measureDeep(event);
-		System.out.println(size);
+		System.out.println("==================================================");
+		System.out.println("The size of the ContextEvent object is: " + size);
+		System.out.println("==================================================");
 	}
 
 	@Override
