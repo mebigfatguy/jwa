@@ -19,6 +19,7 @@ Using JAMM dynamically from a web app seems problematic. Perhaps there is an eas
 
 This is problematic because it appears agents can't be loaded from the classpath, but only from files. So this web app does just this.
 When you load a java agent, it is added to the classpath, so our web app will see it (even though it wasn't supplied as part of the war).
+
 That last part is key, DO NOT INCLUDE JAMM.jar in WEB-INF/lib!!.
 
 This app dynamically adds the javaagent in a ServletContextListener.
